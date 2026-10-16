@@ -1,4 +1,6 @@
-import { Component, input } from '@angular/core';
+import { Component, computed, input } from '@angular/core';
+
+const materialIcons = new Set(['faucet', 'bolt', 'fence', 'build', 'home']);
 
 @Component({
   selector: 'app-icon',
@@ -8,4 +10,5 @@ import { Component, input } from '@angular/core';
 export class Icon {
   readonly name = input.required<string>();
   readonly size = input(28);
+  readonly isMaterial = computed(() => materialIcons.has(this.name()));
 }

@@ -1,14 +1,15 @@
 const whatsappText = encodeURIComponent(
   'Hola Miguel, quiero solicitar un presupuesto.',
 );
+const whatsappUrl = `https://wa.me/5491122689165?text=${whatsappText}`;
 
 export const site = {
   year: 2026,
   brand: 'Miguel Ponce',
   legalName: 'Miguel Ponce Mantenimiento y Servicios',
   phoneDisplay: '11 2268 9165',
-  phoneHref: 'tel:+5491122689165',
-  whatsappUrl: `https://wa.me/5491122689165?text=${whatsappText}`,
+  phoneHref: whatsappUrl,
+  whatsappUrl,
   email: 'migueloponce@gmail.com',
   emailHref: 'mailto:migueloponce@gmail.com',
   area: 'Lanús y zonas aledañas',
@@ -17,7 +18,6 @@ export const site = {
     { id: 'servicios', label: 'Servicios' },
     { id: 'nosotros', label: 'Nosotros' },
     { id: 'planes', label: 'Planes' },
-    { id: 'trabajos', label: 'Trabajos' },
     { id: 'contacto', label: 'Contacto' },
   ],
   hero: {
@@ -43,12 +43,12 @@ export const site = {
       text: 'Instalaciones eléctricas, reparaciones, tableros, iluminación y más.',
     },
     {
-      icon: 'weld',
+      icon: 'fence',
       title: 'Herrería',
       text: 'Rejas, portones, estructuras metálicas, soldaduras y trabajos a medida.',
     },
     {
-      icon: 'gear',
+      icon: 'build',
       title: 'Mantenimiento general',
       text: 'Soluciones integrales para su industria, comercio y hogar.',
     },
@@ -84,33 +84,6 @@ export const site = {
       text: 'Planes a medida para su hogar, comercio, consorcio o industria.',
       cta: 'Consulte nuestros planes',
     },
-  },
-  works: {
-    eyebrow: 'Trabajos',
-    title: 'Lo que hacemos',
-    text: 'Cada trabajo se adapta al lugar y al problema. Estos son los encargos más habituales.',
-    items: [
-      {
-        icon: 'faucet',
-        title: 'Plomería',
-        text: 'Destapes, filtraciones y cambio de cañerías en viviendas y comercios.',
-      },
-      {
-        icon: 'bolt',
-        title: 'Electricidad',
-        text: 'Tableros, iluminación y reparación de instalaciones.',
-      },
-      {
-        icon: 'weld',
-        title: 'Herrería',
-        text: 'Rejas, portones y estructuras metálicas a medida.',
-      },
-      {
-        icon: 'gear',
-        title: 'Mantenimiento integral',
-        text: 'Controles periódicos para consorcios, comercios e industria.',
-      },
-    ],
   },
   cta: {
     title: 'Atención personalizada',
