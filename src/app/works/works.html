@@ -1,0 +1,18 @@
+<section id="trabajos" class="works">
+  <div class="container">
+    <div class="intro" appReveal>
+      <p class="eyebrow">{{ site.works.eyebrow }}</p>
+      <h2>{{ site.works.title }}</h2>
+      <p>{{ site.works.text }}</p>
+    </div>
+    <div class="grid">
+      @for (work of site.works.items; track work.title; let i = $index) {
+        <article appReveal [style.transition-delay]="i * 70 + 'ms'">
+          <app-icon [name]="work.icon" [size]="34" />
+          <h3>{{ work.title }}</h3>
+          <p>{{ work.text }}</p>
+        </article>
+      }
+    </div>
+  </div>
+</section>

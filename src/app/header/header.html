@@ -1,0 +1,37 @@
+<div class="bar">
+  <a class="brand" href="#inicio" (click)="closeMenu()">
+    <svg class="logo" viewBox="0 0 64 64" aria-hidden="true">
+      <path d="M6 30 32 8l26 22" />
+      <path d="M14 28v28h36V28" />
+      <path d="M26 56V40h12v16" />
+      <path d="M20 48 40 30" />
+      <circle cx="43" cy="27" r="4.5" />
+    </svg>
+    <span>
+      <strong>Miguel Ponce</strong>
+      <small>Mantenimiento y servicios</small>
+    </span>
+  </a>
+
+  <button
+    type="button"
+    class="menu-toggle"
+    [attr.aria-expanded]="menuOpen()"
+    aria-controls="site-nav"
+    (click)="toggleMenu()"
+  >
+    <span class="sr-only">{{ menuOpen() ? 'Cerrar menú' : 'Abrir menú' }}</span>
+    <span class="burger" aria-hidden="true"></span>
+  </button>
+
+  <nav id="site-nav">
+    @for (item of site.nav; track item.id) {
+      <a [href]="'#' + item.id" (click)="closeMenu()">{{ item.label }}</a>
+    }
+  </nav>
+
+  <a class="phone-btn" [href]="site.phoneHref">
+    <app-icon name="phone" [size]="18" />
+    {{ site.phoneDisplay }}
+  </a>
+</div>

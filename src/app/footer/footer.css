@@ -1,0 +1,80 @@
+:host {
+  display: block;
+  background: var(--navy);
+  color: var(--white);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.8rem;
+  padding: 3rem 0 2.2rem;
+}
+
+article app-icon {
+  color: var(--yellow);
+  transition: transform 0.25s ease;
+}
+
+h2 {
+  margin: 0.8rem 0 0.4rem;
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+p,
+a {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+article a {
+  display: block;
+  width: fit-content;
+  margin-bottom: 0.2rem;
+  color: var(--white);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+
+article a:hover {
+  color: var(--yellow);
+  border-bottom-color: var(--yellow);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  article:hover app-icon {
+    transform: scale(1.12);
+  }
+}
+
+.copy {
+  margin: 0;
+  padding: 1rem 1.25rem 1.3rem;
+  border-top: 1px solid var(--line);
+  color: #8ea0b3;
+  font-size: 0.92rem;
+  text-align: center;
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  article:hover app-icon {
+    transform: none;
+  }
+}

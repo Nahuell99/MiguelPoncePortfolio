@@ -1,12 +1,17 @@
-import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Component } from '@angular/core';
+import { Header } from './header/header';
+import { Hero } from './hero/hero';
+import { Services } from './services/services';
+import { About } from './about/about';
+import { Plans } from './plans/plans';
+import { Works } from './works/works';
+import { CtaBand } from './cta-band/cta-band';
+import { Footer } from './footer/footer';
 
 @Component({
-  imports: [RouterOutlet],
   selector: 'app-root',
-  styleUrl: './app.css',
+  imports: [Header, Hero, Services, About, Plans, Works, CtaBand, Footer],
   templateUrl: './app.html',
+  styleUrl: './app.css',
 })
-export class App {
-  protected readonly title = signal('miguel-ponce-portfolio');
-}
+export class App {}

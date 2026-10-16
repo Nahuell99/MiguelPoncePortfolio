@@ -1,0 +1,19 @@
+<footer>
+  <div class="container grid">
+    @for (item of site.footer; track item.title; let i = $index) {
+      <article appReveal [style.transition-delay]="i * 70 + 'ms'">
+        <app-icon [name]="item.icon" [size]="34" />
+        <h2>{{ item.title }}</h2>
+        <p>{{ item.text }}</p>
+      </article>
+    }
+    <article appReveal style="transition-delay: 210ms">
+      <app-icon name="whatsapp" [size]="34" />
+      <h2>Contacto directo</h2>
+      <a [href]="site.whatsappUrl" target="_blank" rel="noopener noreferrer">{{ site.phoneDisplay }}</a>
+      <a [href]="site.emailHref">{{ site.email }}</a>
+      <p>Miguel Ponce</p>
+    </article>
+  </div>
+  <p class="copy">© {{ site.year }} {{ site.legalName }}. Todos los derechos reservados.</p>
+</footer>

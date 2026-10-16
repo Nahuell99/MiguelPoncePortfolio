@@ -1,0 +1,16 @@
+<section id="contacto" class="band">
+  <div class="container inner">
+    <app-icon name="users" [size]="42" />
+    <div>
+      <h2>{{ site.cta.title }}</h2>
+      <p>{{ site.cta.text }}</p>
+    </div>
+    <a class="phone" [href]="site.phoneHref">
+      <app-icon name="phone" [size]="22" />
+      {{ site.phoneDisplay }}
+    </a>
+    <a class="btn btn-navy" [href]="site.whatsappUrl" target="_blank" rel="noopener noreferrer">
+      {{ site.cta.button }}
+    </a>
+  </div>
+</section>

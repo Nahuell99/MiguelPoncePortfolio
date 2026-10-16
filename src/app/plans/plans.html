@@ -1,0 +1,22 @@
+<section id="planes" class="plans">
+  <div class="container layout">
+    <div class="main" appReveal>
+      <h2>{{ site.plans.title }}</h2>
+      <div class="cols">
+        @for (plan of site.plans.items; track plan.title) {
+          <article>
+            <app-icon [name]="plan.icon" [size]="36" />
+            <h3>{{ plan.title }}</h3>
+            <p>{{ plan.text }}</p>
+          </article>
+        }
+      </div>
+    </div>
+    <aside appReveal>
+      <app-icon [name]="site.plans.subscription.icon" [size]="36" />
+      <h3>{{ site.plans.subscription.title }}</h3>
+      <p>{{ site.plans.subscription.text }}</p>
+      <a href="#planes">{{ site.plans.subscription.cta }}</a>
+    </aside>
+  </div>
+</section>

@@ -1,0 +1,14 @@
+<section id="servicios" class="services">
+  <div class="container">
+    <h2 class="sr-only">Servicios</h2>
+    <div class="grid">
+      @for (service of site.services; track service.title; let i = $index) {
+        <article appReveal [style.transition-delay]="i * 70 + 'ms'">
+          <app-icon [name]="service.icon" [size]="42" />
+          <h3>{{ service.title }}</h3>
+          <p>{{ service.text }}</p>
+        </article>
+      }
+    </div>
+  </div>
+</section>

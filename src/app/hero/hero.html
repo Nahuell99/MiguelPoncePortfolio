@@ -1,0 +1,28 @@
+<section id="inicio" class="hero">
+  <img
+    class="hero-photo"
+    src="images/hero.jpg"
+    alt="Técnico reparando la cañería bajo una pileta"
+    width="1280"
+    height="720"
+  />
+  <div class="container hero-copy" appReveal>
+    <h1>
+      {{ site.hero.titleLead }}
+      <span>{{ site.hero.titleAccent }}</span>
+    </h1>
+    <p>{{ site.hero.text }}</p>
+    <ul class="badges">
+      @for (badge of site.hero.badges; track badge.label) {
+        <li>
+          <app-icon [name]="badge.icon" [size]="22" />
+          {{ badge.label }}
+        </li>
+      }
+    </ul>
+    <a class="btn btn-yellow" [href]="site.whatsappUrl" target="_blank" rel="noopener noreferrer">
+      <app-icon name="chat" [size]="20" />
+      {{ site.hero.cta }}
+    </a>
+  </div>
+</section>

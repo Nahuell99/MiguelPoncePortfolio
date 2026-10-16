@@ -1,0 +1,5 @@
+# SITE_URL: reemplazar https://REEMPLAZAR-DOMINIO tambien en src/index.html y public/sitemap.xml
+User-agent: *
+Allow: /
+
+Sitemap: https://REEMPLAZAR-DOMINIO/sitemap.xml
