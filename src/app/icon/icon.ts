@@ -1,6 +1,6 @@
 import { Component, computed, input } from '@angular/core';
 
-const materialIcons = new Set(['faucet', 'bolt', 'fence', 'build', 'home']);
+const materialIcons = new Set(['faucet', 'bolt', 'fence', 'build', 'home', 'gas_meter']);
 
 @Component({
   selector: 'app-icon',

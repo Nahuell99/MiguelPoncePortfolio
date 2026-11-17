@@ -1,17 +1,45 @@
 <section id="nosotros" class="about">
   <div class="container grid">
-    <div appReveal>
-      <p class="eyebrow">{{ site.about.eyebrow }}</p>
-      <h2>{{ site.about.title }}</h2>
-      <p>{{ site.about.text }}</p>
-      <a class="btn btn-navy" href="#nosotros">{{ site.about.cta }}</a>
+    <div class="photo" appReveal>
+      <img
+        src="images/about.jpg"
+        alt="Técnico revisando un tablero eléctrico"
+        width="900"
+        height="675"
+        loading="lazy"
+        decoding="async"
+      />
+      <img
+        class="inset"
+        src="images/trabajos/gas-6-sm.webp"
+        alt="Miguel soldando una cañería de gas en un nicho de medidor"
+        width="640"
+        height="491"
+        loading="lazy"
+        decoding="async"
+      />
     </div>
-    <img
-      appReveal
-      src="images/about.jpg"
-      alt="Técnico revisando un tablero eléctrico"
-      width="900"
-      height="675"
-    />
+
+    <div class="copy" appReveal>
+      <h2 class="title">{{ site.about.title }}</h2>
+      <p class="lede">{{ site.about.text }}</p>
+
+      <ul class="facts">
+        @for (f of site.about.facts; track f.title) {
+          <li>
+            <span class="ic" aria-hidden="true"><app-icon [name]="f.icon" [size]="22" /></span>
+            <span>
+              <strong>{{ f.title }}</strong>
+              {{ f.text }}
+            </span>
+          </li>
+        }
+      </ul>
+
+      <a class="btn btn-navy" [href]="site.whatsappUrl" target="_blank" rel="noopener noreferrer">
+        <app-icon name="whatsapp" [size]="20" />
+        {{ site.about.cta }}
+      </a>
+    </div>
   </div>
 </section>

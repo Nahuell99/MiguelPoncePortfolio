@@ -20,6 +20,8 @@ export class Reveal implements OnDestroy {
           if (entries.some((entry) => entry.isIntersecting)) {
             node.classList.add('is-visible');
             this.observer?.disconnect();
+            // El retraso escalonado sólo sirve para la entrada; después estorba en el hover.
+            setTimeout(() => (node.style.transitionDelay = ''), 1200);
           }
         },
         { threshold: 0.16, rootMargin: '0px 0px -8% 0px' },

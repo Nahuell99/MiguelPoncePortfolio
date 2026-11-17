@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { site } from '../site';
+import { Icon } from '../icon/icon';
 import { Reveal } from '../reveal';
 
 @Component({
   selector: 'app-about',
-  imports: [Reveal],
+  imports: [Icon, Reveal],
   templateUrl: './about.html',
   styleUrl: './about.css',
 })

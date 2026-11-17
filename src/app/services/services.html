@@ -1,14 +1,46 @@
 <section id="servicios" class="services">
   <div class="container">
-    <h2 class="sr-only">Servicios</h2>
+    <div class="head" appReveal>
+      <h2 class="title">Trabajos y servicios</h2>
+      <p class="lede">Tocá cada servicio para ver fotos de mis trabajos.</p>
+    </div>
+
     <div class="grid">
-      @for (service of site.services; track service.title; let i = $index) {
-        <article appReveal [style.transition-delay]="i * 70 + 'ms'">
-          <app-icon [name]="service.icon" [size]="42" />
-          <h3>{{ service.title }}</h3>
-          <p>{{ service.text }}</p>
+      @for (s of site.services; track s.id; let i = $index) {
+        <article
+          class="card"
+          appReveal
+          [style.transition-delay]="(i % 3) * 80 + 'ms'"
+          [style.--tone]="'var(--' + s.tone + ')'"
+        >
+          <div class="media">
+            <img
+              [src]="s.photos[0].thumb"
+              [alt]="''"
+              [attr.width]="s.photos[0].width"
+              [attr.height]="s.photos[0].height"
+              loading="lazy"
+              decoding="async"
+            />
+            <span class="count" aria-hidden="true">
+              <app-icon name="photos" [size]="16" />
+              {{ s.photos.length }}
+            </span>
+          </div>
+          <div class="body">
+            <span class="chip" aria-hidden="true"><app-icon [name]="s.icon" [size]="24" /></span>
+            <h3>{{ s.title }}</h3>
+            <p>{{ s.text }}</p>
+            <button type="button" class="open" (click)="open(s)">
+              {{ s.photos.length === 1 ? 'Ver la foto' : 'Ver ' + s.photos.length + ' fotos' }}
+              <span class="sr-only">de {{ s.title }}</span>
+              <app-icon name="expand" [size]="18" />
+            </button>
+          </div>
         </article>
       }
     </div>
   </div>
 </section>
+
+<app-gallery />

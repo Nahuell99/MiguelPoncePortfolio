@@ -1,28 +1,47 @@
 <section id="inicio" class="hero">
-  <img
-    class="hero-photo"
-    src="images/hero.jpg"
-    alt="Técnico reparando la cañería bajo una pileta"
-    width="1280"
-    height="720"
-  />
-  <div class="container hero-copy" appReveal>
-    <h1>
-      {{ site.hero.titleLead }}
-      <span>{{ site.hero.titleAccent }}</span>
-    </h1>
-    <p>{{ site.hero.text }}</p>
-    <ul class="badges">
-      @for (badge of site.hero.badges; track badge.label) {
-        <li>
-          <app-icon [name]="badge.icon" [size]="22" />
-          {{ badge.label }}
-        </li>
-      }
-    </ul>
-    <a class="btn btn-yellow" [href]="site.whatsappUrl" target="_blank" rel="noopener noreferrer">
-      <app-icon name="chat" [size]="20" />
-      {{ site.hero.cta }}
-    </a>
+  <div class="container layout">
+    <div class="copy">
+      <p class="status">
+        <span class="dot" aria-hidden="true"></span>
+        {{ site.hero.status }}
+      </p>
+      <h1>
+        {{ site.hero.titleLead }}
+        <span>{{ site.hero.titleAccent }}</span>
+      </h1>
+      <p class="text">{{ site.hero.text }}</p>
+      <div class="actions">
+        <a class="btn btn-gas" [href]="site.whatsappUrl" target="_blank" rel="noopener noreferrer">
+          <app-icon name="whatsapp" [size]="22" />
+          {{ site.hero.cta }}
+        </a>
+        <a class="btn btn-ghost" href="#servicios">
+          <app-icon name="photos" [size]="20" />
+          {{ site.hero.secondary }}
+        </a>
+      </div>
+    </div>
+
+    <figure class="visual">
+      <span class="pipe pipe-gas" aria-hidden="true"></span>
+      <span class="pipe pipe-agua" aria-hidden="true"></span>
+      <div class="frame">
+        <img
+          src="images/trabajos/gas-1.webp"
+          alt="Batería de cañerías de gas amarillas instalada por Miguel para varios medidores"
+          width="1067"
+          height="1127"
+          fetchpriority="high"
+        />
+      </div>
+      <figcaption>
+        <ul class="legend" aria-label="Oficios">
+          <li><span style="--c: var(--gas)"></span>Gas</li>
+          <li><span style="--c: var(--agua)"></span>Agua</li>
+          <li><span style="--c: var(--luz)"></span>Luz</li>
+          <li><span style="--c: var(--hierro)"></span>Hierro</li>
+        </ul>
+      </figcaption>
+    </figure>
   </div>
 </section>

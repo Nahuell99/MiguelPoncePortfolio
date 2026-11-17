@@ -1,51 +1,52 @@
 :host {
   display: block;
+  margin-top: calc(-1 * var(--header-h));
   background: var(--navy);
-  color: var(--white);
+  color: var(--on-navy);
+  border-radius: 0 0 var(--r-xl) var(--r-xl);
+  overflow: clip;
 }
 
 .hero {
-  position: relative;
-  min-height: 640px;
-  display: flex;
+  padding: calc(var(--header-h) + 4.5rem) 0 5.5rem;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: clamp(2rem, 5vw, 5rem);
   align-items: center;
-  overflow: hidden;
 }
 
-.hero-photo {
-  position: absolute;
-  inset: 0 0 0 34%;
-  width: 66%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center right;
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin: 0 0 1.4rem;
+  padding: 0.4rem 0.9rem 0.4rem 0.7rem;
+  border-radius: var(--r-pill);
+  background: rgba(255, 255, 255, 0.07);
+  box-shadow: inset 0 0 0 1px var(--line-on-navy);
+  color: var(--on-navy-soft);
+  font-size: 0.92rem;
+  font-weight: 600;
 }
 
-.hero::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    90deg,
-    #071425 0%,
-    #071425 36%,
-    rgba(7, 20, 37, 0.72) 58%,
-    rgba(7, 20, 37, 0.18) 100%
-  );
-}
-
-.hero-copy {
-  position: relative;
-  z-index: 1;
-  max-width: 640px;
-  padding: 4.5rem 0 5rem;
+.dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #34d17d;
+  box-shadow: 0 0 0 0 rgba(52, 209, 125, 0.6);
+  animation: pulse 2.4s ease-out infinite;
 }
 
 h1 {
   margin: 0;
   max-width: 11ch;
-  font-family: var(--font-display);
-  font-size: clamp(3.3rem, 7vw, 5.4rem);
+  font-family: "Barlow Condensed", "Arial Narrow", sans-serif;
+  /* Escala con la pantalla para que "MANTENIMIENTO" entre hasta en 320px */
+  font-size: clamp(2.4rem, 15vw - 0.4rem, 5.6rem);
   font-weight: 800;
   line-height: 0.88;
   letter-spacing: 0.01em;
@@ -54,62 +55,309 @@ h1 {
 
 h1 span {
   display: block;
-  color: var(--yellow);
+  color: var(--gas);
   white-space: nowrap;
 }
 
-.hero-copy > p {
-  max-width: 34ch;
-  margin: 1.2rem 0 0;
-  color: #d7e0ea;
-  font-size: 1.25rem;
-  line-height: 1.45;
+.text {
+  max-width: 44ch;
+  margin: 1.4rem 0 0;
+  color: var(--on-navy-soft);
+  font-size: clamp(1.08rem, 1rem + 0.4vw, 1.25rem);
 }
 
-.badges {
+.actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 1.15rem 1.5rem;
-  margin: 1.6rem 0 1.8rem;
-  padding: 0;
-  list-style: none;
+  gap: 0.75rem;
+  margin-top: 2.2rem;
 }
 
-.badges li {
+/* Foto con caños que la abrazan, como una instalación real */
+.visual {
+  position: relative;
+  margin: 0;
+  padding: 34px 34px 0 0;
+}
+
+.frame {
+  position: relative;
+  z-index: 1;
+  aspect-ratio: 4 / 4.3;
+  border-radius: var(--r-xl);
+  overflow: hidden;
+  box-shadow: 0 40px 80px -30px rgba(0, 0, 0, 0.7);
+}
+
+.frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.pipe {
+  position: absolute;
+  border-style: solid;
+  border-color: transparent;
+  border-left: 0;
+  border-bottom: 0;
+}
+
+.pipe-gas {
+  top: 12px;
+  right: 12px;
+  width: 78%;
+  height: 72%;
+  border-width: 11px 11px 0 0;
+  border-top-color: var(--gas);
+  border-right-color: var(--gas);
+  border-top-right-radius: 56px;
+}
+
+.pipe-agua {
+  top: -10px;
+  right: -10px;
+  width: 58%;
+  height: 52%;
+  border-width: 11px 11px 0 0;
+  border-top-color: var(--agua);
+  border-right-color: var(--agua);
+  border-top-right-radius: 76px;
+}
+
+/* Cuplas: los anillos de unión de los caños */
+.pipe::before,
+.pipe::after {
+  content: "";
+  position: absolute;
+  border-radius: 4px;
+  background: inherit;
+  box-shadow: inset 0 0 0 999px rgba(0, 0, 0, 0.18);
+}
+
+.pipe-gas::before,
+.pipe-agua::before {
+  top: -15px;
+  left: 0;
+  width: 10px;
+  height: 19px;
+  background: var(--gas);
+}
+
+.pipe-agua::before {
+  background: var(--agua);
+}
+
+.pipe-gas::after,
+.pipe-agua::after {
+  bottom: 0;
+  right: -15px;
+  width: 19px;
+  height: 10px;
+  background: var(--gas);
+}
+
+.pipe-agua::after {
+  background: var(--agua);
+}
+
+figcaption {
+  position: absolute;
+  z-index: 2;
+  left: 1rem;
+  bottom: 1rem;
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin: 0;
+  padding: 0.4rem;
+  list-style: none;
+  border-radius: var(--r-pill);
+  background: rgba(10, 27, 48, 0.78);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+.legend li {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  font-family: var(--font-display);
-  font-size: 1.05rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  padding: 0.25rem 0.65rem;
+  font-size: 0.85rem;
+  font-weight: 600;
 }
 
-.badges app-icon {
-  color: var(--yellow);
+.legend span {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--c);
 }
 
-@media (max-width: 800px) {
+/* Secuencia de carga: el texto entra, después se "instalan" los caños */
+@media (prefers-reduced-motion: no-preference) {
+  .copy > * {
+    animation: rise 0.9s var(--ease-out) both;
+  }
+
+  .copy > :nth-child(2) {
+    animation-delay: 0.08s;
+  }
+
+  .copy > :nth-child(3) {
+    animation-delay: 0.16s;
+  }
+
+  .copy > :nth-child(4) {
+    animation-delay: 0.24s;
+  }
+
+  .frame {
+    animation: settle 1.1s var(--ease-out) 0.1s both;
+  }
+
+  .pipe-gas {
+    animation: lay 1.1s var(--ease-out) 0.55s both;
+  }
+
+  .pipe-agua {
+    animation: lay 1.1s var(--ease-out) 0.8s both;
+  }
+
+  figcaption {
+    animation: rise 0.8s var(--ease-out) 1.2s both;
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+}
+
+@keyframes settle {
+  from {
+    opacity: 0;
+    transform: scale(0.94);
+    border-radius: 64px;
+  }
+}
+
+@keyframes lay {
+  from {
+    clip-path: inset(0 100% 100% 0);
+  }
+  60% {
+    clip-path: inset(0 0 100% 0);
+  }
+  to {
+    clip-path: inset(-20px -20px -20px -20px);
+  }
+}
+
+@keyframes pulse {
+  70% {
+    box-shadow: 0 0 0 8px rgba(52, 209, 125, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(52, 209, 125, 0);
+  }
+}
+
+@media (max-width: 860px) {
   .hero {
-    min-height: 0;
+    padding: calc(var(--header-h) + 2.5rem) 0 3.5rem;
   }
 
-  .hero-photo {
-    inset: 0;
+  .layout {
+    grid-template-columns: 1fr;
+    gap: 2.75rem;
+  }
+
+  .visual {
+    width: min(100%, 460px);
+    padding: 24px 24px 0 0;
+  }
+
+  .pipe-gas {
+    top: 8px;
+    right: 8px;
+  }
+
+  .pipe-agua {
+    top: -6px;
+    right: -6px;
+  }
+
+  .frame {
+    aspect-ratio: 4 / 3.6;
+  }
+}
+
+@media (max-width: 520px) {
+  :host {
+    border-radius: 0 0 var(--r-lg) var(--r-lg);
+  }
+
+  .actions .btn {
     width: 100%;
-    opacity: 0.55;
   }
 
-  .hero::after {
-    background: linear-gradient(180deg, rgba(7, 20, 37, 0.35) 0%, rgba(7, 20, 37, 0.82) 55%, #071425 100%);
+  .visual {
+    padding: 18px 18px 0 0;
   }
 
   h1 span {
     white-space: normal;
   }
 
-  .hero-copy {
-    padding: 3rem 0 3.4rem;
+  .pipe {
+    border-width: 8px 8px 0 0;
+  }
+
+  .pipe-gas {
+    top: 5px;
+    right: 5px;
+    border-top-right-radius: 40px;
+  }
+
+  .pipe-agua {
+    top: -6px;
+    right: -6px;
+    border-top-right-radius: 52px;
+  }
+
+  .legend li {
+    padding: 0.2rem 0.5rem;
+    font-size: 0.8rem;
+  }
+}
+
+/* Teléfonos chicos: la leyenda en una sola línea */
+@media (max-width: 380px) {
+  figcaption {
+    left: 0.6rem;
+    bottom: 0.6rem;
+  }
+
+  .legend {
+    flex-wrap: nowrap;
+    gap: 0;
+    padding: 0.3rem;
+  }
+
+  .legend li {
+    gap: 0.3rem;
+    padding: 0.15rem 0.4rem;
+    font-size: 0.74rem;
+  }
+
+  .legend span {
+    width: 8px;
+    height: 8px;
   }
 }

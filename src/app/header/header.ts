@@ -12,6 +12,7 @@ import { Icon } from '../icon/icon';
     '[class.is-open]': 'menuOpen()',
     '(window:scroll)': 'onScroll()',
     '(document:keydown.escape)': 'closeMenu()',
+    '(document:click)': 'onDocumentClick($event)',
   },
 })
 export class Header {
@@ -32,5 +33,14 @@ export class Header {
 
   closeMenu(): void {
     this.menuOpen.set(false);
+  }
+
+  /** Cierra el menú móvil al tocar fuera de la barra. */
+  onDocumentClick(event: MouseEvent): void {
+    if (!this.menuOpen()) return;
+    const target = event.target as HTMLElement | null;
+    if (target && !target.closest('app-header')) {
+      this.closeMenu();
+    }
   }
 }
